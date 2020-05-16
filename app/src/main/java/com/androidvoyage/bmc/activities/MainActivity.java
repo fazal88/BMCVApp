@@ -1,7 +1,8 @@
-package com.androidvoyage.bmc;
+package com.androidvoyage.bmc.activities;
 
 import android.Manifest;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -16,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.androidvoyage.bmc.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -25,6 +27,31 @@ import java.io.FileOutputStream;
 public class MainActivity extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_REQUEST_STORAGE = 1111;
+    Context context;
+
+    public static Bitmap getScreenShot(View screenView) {
+        /*View screenView = view.getRootView();*/
+        screenView.setDrawingCacheEnabled(true);
+        Bitmap bitmap = Bitmap.createBitmap(screenView.getDrawingCache());
+        screenView.setDrawingCacheEnabled(false);
+        return bitmap;
+    }
+
+    public static void store(Bitmap bm, String fileName) {
+        final String dirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/BMCV_APP";
+        File dir = new File(dirPath);
+        if (!dir.exists())
+            dir.mkdirs();
+        File file = new File(dirPath, fileName);
+        try {
+            FileOutputStream fOut = new FileOutputStream(file);
+            bm.compress(Bitmap.CompressFormat.PNG, 85, fOut);
+            fOut.flush();
+            fOut.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +59,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        context = this;
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
-               checkForPermissionAndSave();
+                /*checkForPermissionAndSave();*/
+                context.startActivity(new Intent(context, ListActivity.class));
 
             }
         });
@@ -70,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void saveScreenShot() {
         View rootView = findViewById(R.id.container_layout);
-        store(getScreenShot(rootView), "RESUME2020_" + System.currentTimeMillis()+".png");
+        store(getScreenShot(rootView), "RESUME2020_" + System.currentTimeMillis() + ".png");
     }
 
     @Override
@@ -94,31 +122,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static Bitmap getScreenShot(View screenView) {
-        /*View screenView = view.getRootView();*/
-        screenView.setDrawingCacheEnabled(true);
-        Bitmap bitmap = Bitmap.createBitmap(screenView.getDrawingCache());
-        screenView.setDrawingCacheEnabled(false);
-        return bitmap;
-    }
-
-    public static void store(Bitmap bm, String fileName){
-        final String dirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/BMCV_APP";
-        File dir = new File(dirPath);
-        if(!dir.exists())
-            dir.mkdirs();
-        File file = new File(dirPath, fileName);
-        try {
-            FileOutputStream fOut = new FileOutputStream(file);
-            bm.compress(Bitmap.CompressFormat.PNG, 85, fOut);
-            fOut.flush();
-            fOut.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void shareImage(File file){
+    private void shareImage(File file) {
         Uri uri = Uri.fromFile(file);
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
