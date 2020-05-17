@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
-    <color name="off_white">#f3f3f3</color>
-    <color name="gray">#d3d3d3</color>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary">@color/white</color>
+    <color name="colorPrimaryDark">@color/white</color>
+    <color name="colorAccent">#6200EE</color>
+
     <color name="black">#000000</color>
+    <color name="carbon">#53514F</color>
+    <color name="dark_grey">#8C8582</color>
+    <color name="grey">#9E9E9E</color>
+    <color name="light_grey">#d3d3d3</color>
+    <color name="card_background">#eeeeee</color>
+    <color name="off_white">#f3f3f3</color>
+    <color name="white">#FFFFFF</color>
+
+    // shades that are semi transparent
+    <color name="dim_black_66">#66000000</color>                    //shade
+    <color name="dim_black_33">#33000000</color>                    //shade
+    <color name="dim_grey_22">#229E9E9E</color>                     //shade
+    <color name="transparent">#00000000</color>                     //shade
+
 </resources>
