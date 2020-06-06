@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
-    android:background="@drawable/back_white_corner_round_4"
+    android:background="@drawable/back_capsule_4dp"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -19,7 +19,7 @@
         android:id="@+id/et_dialog_getString"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/back_white_corner_round_4"
+        android:background="@drawable/back_capsule_4dp"
         android:backgroundTint="@color/dim_grey_22"
         android:hint="Type here"
         android:minHeight="48dp"

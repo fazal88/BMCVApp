@@ -3,6 +3,7 @@
     <color name="colorPrimary">@color/white</color>
     <color name="colorPrimaryDark">@color/white</color>
     <color name="colorAccent">#6200EE</color>
+    <color name="colorAccentLight">#f5eeff</color>
 
     <color name="black">#000000</color>
     <color name="carbon">#53514F</color>

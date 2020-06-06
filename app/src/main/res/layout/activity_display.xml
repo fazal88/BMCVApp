@@ -26,153 +26,293 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
+            android:paddingBottom="60dp"
+            android:clipToPadding="false"
             android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:background="@color/off_white"
-                android:paddingBottom="16dp"
                 android:layout_height="wrap_content">
+
                 <ImageView
                     android:id="@+id/iv_profile"
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
                     android:layout_margin="16dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/profile"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_progress"/>
 
                 <ProgressBar
                     android:id="@+id/pb_profile"
                     style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:progress="50"
-                    app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tv_progress"
+                    style="@style/BMCVTextViewMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="Profile Completed : 50%"
+                    app:layout_constraintTop_toBottomOf="@+id/pb_profile"
+                    app:layout_constraintStart_toStartOf="@+id/pb_profile" />
+
+                <TextView
+                    android:id="@+id/tv_last_updated"
+                    style="@style/BMCVTextViewSmall"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="end"
+                    android:textColor="@color/dark_grey"
+                    android:text="last updated 3 months ago"
+                    app:layout_constraintTop_toTopOf="@+id/tv_progress"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_progress"
+                    app:layout_constraintStart_toEndOf="@+id/tv_progress"
+                    app:layout_constraintEnd_toEndOf="@+id/pb_profile" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    style="@style/BMCVTextViewAutoSize"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="Shaikh Mohd Fazal Abubakar"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/iv_profile"
                     app:layout_constraintTop_toTopOf="@+id/iv_profile" />
 
                 <TextView
-                    android:id="@+id/tv_progress"
-                    style="@style/TextViewMedium"
+                    android:id="@+id/tv_work_title"
+                    style="@style/BMCVTextViewAutoSize"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="Profile Completed : 50%"
-                    app:layout_constraintBottom_toTopOf="@+id/pb_profile"
-                    app:layout_constraintEnd_toEndOf="@+id/pb_profile"
-                    app:layout_constraintStart_toStartOf="@+id/pb_profile" />
-
-                <TextView
-                    android:id="@+id/tv_last_updated"
-                    style="@style/TextViewSmall"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:textColor="@color/dark_grey"
-                    android:text="last updated 3 months ago"
-                    app:layout_constraintEnd_toEndOf="@+id/pb_profile"
-                    app:layout_constraintStart_toStartOf="@+id/pb_profile"
-                    app:layout_constraintTop_toBottomOf="@+id/pb_profile" />
-
-                <TextView
-                    android:id="@+id/tv_name"
-                    style="@style/TextViewAutoSize"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:text="Shaikh Mohd Fazal Abubakar"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
-
-                <TextView
-                    android:id="@+id/tv_designated_firm"
-                    style="@style/TextViewMedium"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:text="Android Application Developer - Relife Medicare Systems LLP"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_height="0dp"
+                    android:gravity="center_vertical"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
+                    android:text="Android Application Developer"
+                    android:textColor="@color/black"
+                    android:drawableStart="@drawable/ic_work_title"
+                    android:drawablePadding="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_work_place"
+                    app:layout_constraintStart_toStartOf="@+id/tv_name"
                     app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+                <TextView
+                    android:id="@+id/tv_work_place"
+                    style="@style/BMCVTextViewAutoSize"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingEnd="16dp"
+                    android:drawableStart="@drawable/ic_work_place"
+                    android:drawablePadding="8dp"
+                    android:text="Relife Medicare Systems LLP."
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tv_name"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_work_title" />
+
+                <com.google.android.flexbox.FlexboxLayout
+                    android:id="@+id/fl_status"
+                    android:layout_width="0dp"
+                    app:flexWrap="wrap"
+                    app:justifyContent="flex_start"
+                    android:padding="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_profile"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="8dp"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/ic_case"
+                        android:text="4 Years 3 Months"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="8dp"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/ic_wallet"
+                        android:text="INR 7 Lacs per year"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="8dp"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/ic_phone"
+                        android:text="7303991959"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="8dp"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/ic_mail"
+                        android:text="ssredphoenix50@gmail.com"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="8dp"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/ic_location"
+                        android:text="Mumbai, INDIA"/>
+
+                </com.google.android.flexbox.FlexboxLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="16dp"
-                android:drawableStart="@drawable/ic_location"
-                android:drawablePadding="8dp"
-                android:text="Mumbai, INDIA"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:drawableStart="@drawable/ic_case"
-                android:drawablePadding="8dp"
-                android:layout_marginTop="16dp"
-                android:text="4 Years 3 Months"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:drawableStart="@drawable/ic_wallet"
-                android:drawablePadding="8dp"
-                android:layout_marginTop="16dp"
-                android:text="INR 7 Lacs per year"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:drawableStart="@drawable/ic_mail"
-                android:drawablePadding="8dp"
-                android:layout_marginTop="16dp"
-                android:text="ssredphoenix50@gmail.com"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:drawableStart="@drawable/ic_phone"
-                android:drawablePadding="8dp"
-                android:layout_marginTop="16dp"
-                android:text="7303991959"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="@color/grey"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Resume Headline"
-                style="@style/TextViewLarge"
+                style="@style/BMCVTextViewLarge"
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"/>
 
             <TextView
+                style="@style/BMCVTextViewMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/TextViewMedium"
-                android:text="@string/str_data"
-                android:maxLines="2"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:lineSpacingExtra="3dp"
+                android:maxLines="4"
+                android:text="@string/str_data" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="Key Skills"
+                style="@style/BMCVTextViewLarge"
+                android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"/>
+
+            <ImageView
+                android:id="@+id/iv_btn_add_skills"
+                android:layout_width="64dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_add"
+                android:scaleType="centerInside"
+                android:tint="@color/white"
+                android:layout_gravity="end"
+                android:layout_marginTop="-32dp"
+                android:paddingVertical="8dp"
+                android:backgroundTint="@color/colorAccent"
+                android:paddingHorizontal="24dp"
+                android:background="@drawable/back_capsule_16dp"
+                android:layout_marginEnd="16dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_tag"
+                tools:itemCount="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="Employment"
+                style="@style/BMCVTextViewLarge"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"/>
+
+            <ImageView
+                android:id="@+id/iv_btn_add_employments"
+                android:layout_width="64dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_add"
+                android:scaleType="centerInside"
+                android:tint="@color/white"
+                android:layout_gravity="end"
+                android:layout_marginTop="-32dp"
+                android:paddingVertical="8dp"
+                android:backgroundTint="@color/colorAccent"
+                android:paddingHorizontal="24dp"
+                android:background="@drawable/back_capsule_16dp"
+                android:layout_marginEnd="16dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_employment"
+                tools:itemCount="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="Projects"
+                style="@style/BMCVTextViewLarge"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"/>
+
+            <ImageView
+                android:id="@+id/iv_btn_add_project"
+                android:layout_width="64dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_add"
+                android:scaleType="centerInside"
+                android:tint="@color/white"
+                android:layout_gravity="end"
+                android:layout_marginTop="-32dp"
+                android:paddingVertical="8dp"
+                android:backgroundTint="@color/colorAccent"
+                android:paddingHorizontal="24dp"
+                android:background="@drawable/back_capsule_16dp"
+                android:layout_marginEnd="16dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_projects"
+                tools:itemCount="1" />
 
         </LinearLayout>
 
